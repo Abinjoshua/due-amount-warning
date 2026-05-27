@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_res_partner_form_view" model="ir.ui.view">
+        <field name="name">res.partner.form.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='general']" position="after">
+                <group id="due_amount_warning" string="Due Amount Warning" groups="account.group_account_invoice,account.group_account_readonly">
+                    <field name="is_active_credit_limit"/>
+                    <field name="warning_amount" invisible="is_active_credit_limit != True"/>
+                    <field name="blocking_amount" invisible="is_active_credit_limit != True"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
